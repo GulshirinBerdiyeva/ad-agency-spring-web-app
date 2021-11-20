@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Order</title>
+    <th:block th:insert="fragments/header :: head"></th:block>
+</head>
+
+<body class="main-body">
+
+<header>
+    <th:block th:insert="fragments/header :: main-header"></th:block>
+</header>
+
+<nav th:insert="fragments/clientMenu :: clientMenu"></nav>
+
+<main class="add-new-music">
+    <form th:action="@{/orderPage}">
+        <h1>Advertising order</h1>
+        <hr/>
+
+        <input type="text" name="title" placeholder="Title" min="3" max="40"
+               pattern="(?=.*[A-Za-zА-Яа-яЁё])(?=.*[A-Za-zА-Яа-яЁё])[\wА-Яа-яЁё ']{3,40}"
+               title="${musicTitle}" required />
+
+        <input id="jpg" type="file" name="imageFile" accept=".jpg" required>
+        <label for="jpg">Image</label>
+
+        <input id="submit" type="submit" value="Submit">
+    </form>
+</main>
+
+</body>
+</html>

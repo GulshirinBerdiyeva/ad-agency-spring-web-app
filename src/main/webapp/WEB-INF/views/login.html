@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Login</title>
+    <th:block th:insert="fragments/header :: head"></th:block>
+</head>
+
+<header>
+    <th:block th:insert="fragments/header :: login-header"></th:block>
+</header>
+
+<body class="main-body">
+<main class="login-form">
+    <form th:action="@{/}">
+        <h1>Login</h1>
+
+        <br/>
+        <h2 th:if="${#request.getAttribute('errorLogin') != null}">ErrorLogin</h2>
+
+        <br/>
+        <input type="text" name="username" placeholder="Username" min="2" max="61"
+               pattern="[A-ZА-ЯЁ][a-zа-яё]{1,30}( [A-ZА-ЯЁ][a-zа-яё]{1,30})?"
+               title="Example: [Name] or [Name Surname], [min max] length of each parameters [2 30] characters" required />
+        <br/>
+        <br/>
+        <input type="password" name="password" placeholder="Password" min="8" max="20"
+               pattern="(?=.*[A-ZА-ЯЁ])(?=.*[a-zа-яё])(?=.*\d)[\wА-Яа-яЁё]{8,20}" required />
+        <button type="submit">Log in</button>
+        <div>
+            <a th:href="@{/registrationPage}" >Not registered yet?</a>
+        </div>
+    </form>
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin profile</title>
+    <th:block th:insert="fragments/header :: head"></th:block>
+</head>
+
+<body class="main-body">
+
+<header>
+    <th:block th:insert="fragments/header :: main-header"></th:block>
+</header>
+
+<nav th:insert="fragments/adminMenu :: adminMenu"></nav>
+
+<main>
+    <div class="profile-wrapper" >
+        <h1>Admin profile</h1>
+        <hr/>
+
+        <table id="profile" class="music-text-inform">
+            <tr>
+                <th><img src="#" align="absmiddle" ></th>
+                <th><h2>User amount</h2></th>
+            </tr>
+            <tr>
+                <th><img src="#" align="absmiddle" ></th>
+                <th><h2>Devices amount</h2></th>
+            </tr>
+            <tr>
+                <th><img src="#" align="absmiddle" ></th>
+                <th><h2>Ad amount</h2></th>
+            </tr>
+        </table>
+    </div>
+</main>
+
+</body>
+</html>
