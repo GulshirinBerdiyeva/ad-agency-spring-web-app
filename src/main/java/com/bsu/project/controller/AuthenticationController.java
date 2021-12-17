@@ -6,20 +6,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Arrays;
 
+/**
+ * @author Gulshirin Berdiyeva
+ */
 @Controller
 public class AuthorisationController {
+
     @GetMapping("/")
-    public String login() {
+    public String getLoginPage() {
         return "login";
     }
 
     @GetMapping("/styles.css")
-    public String styles() {
+    public String getStyles() {
         return "../statics/styles.css";
     }
 
     @GetMapping("/registrationPage")
-    public String registrationPage() {
+    public String getRegistrationPage() {
         return "registration";
     }
 
@@ -29,7 +33,7 @@ public class AuthorisationController {
     }
 
     @GetMapping("/main")
-    public String main(Model model) {
+    public String getMainPage(Model model) {
         model.addAttribute("ads", Arrays.asList(1, 2, 3));
         return "main";
     }

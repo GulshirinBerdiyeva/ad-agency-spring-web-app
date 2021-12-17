@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -89,6 +89,7 @@
     </div>
     <br>
     <div style="text-align:center">
+        <span class="dot" th:each="ad : ${#fields.hasErrors()}"></span>
         <span class="dot" th:each="ad : ${#request.getAttribute('ads')}"></span>
     </div>
 </th:block>
