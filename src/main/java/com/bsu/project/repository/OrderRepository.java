@@ -1,7 +1,6 @@
 package com.bsu.project.repository;
 
 import com.bsu.project.entity.Order;
-import com.bsu.project.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -23,7 +22,8 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     @Override
     <S extends Order> S save(S entity);
 
-    List<Order> findAllByUser(User user);
+    @Query(value = "select * from orders where user_id = ?1 and payment = true", nativeQuery = true)
+    List<Order> findAllByUserId(Long userId);
 
     @Query(value = "select count(*) from orders where user_id = ?1 and payment = true", nativeQuery = true)
     long countAdsByUserIdAndPayment(Long userId);

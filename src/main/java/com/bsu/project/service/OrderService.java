@@ -61,10 +61,9 @@ public class OrderService extends AbstractService<Order> implements IOrderServic
         this.adPriceCalculator = adPriceCalculator;
     }
 
-
     @Override
-    public List<Order> findAllByUser(User user) {
-        return orderRepository.findAllByUser(user);
+    public List<Order> findAllByUserId(Long userId) {
+        return orderRepository.findAllByUserId(userId);
     }
 
     @Override
@@ -123,17 +122,15 @@ public class OrderService extends AbstractService<Order> implements IOrderServic
                     .setScale(2, RoundingMode.HALF_UP);
 
             user.setBalance(userNewBalance);
+            userService.save(user);
 
             ad.setPayment(true);
+            adService.save(ad);
 
             order.setOrderTime(new Date());
             order.setPayment(true);
 
-            User save = userService.save(user);
-            Ad updatedAd = adService.save(ad);
-            Order updatedOrder = save(order);
-
-            return updatedOrder;
+            return save(order);
 
         } else {
             throw new ServiceException("Please, fill balance!");

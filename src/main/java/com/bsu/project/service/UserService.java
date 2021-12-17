@@ -25,13 +25,13 @@ public class UserService extends AbstractService<User> implements IUserService {
     private final FullNameValidator fullNameValidator;
     private final PasswordValidator passwordValidator;
     private final PasswordEncoder passwordEncoder;
-    private final DoubleNumValidator doubleNumValidator;
+    private final BalanceValidator doubleNumValidator;
     private final ClientConverter clientConverter;
 
     @Autowired
     public UserService(UserRepository userRepository,
                        FullNameValidator fullNameValidator, PasswordValidator passwordValidator,
-                       PasswordEncoder passwordEncoder, DoubleNumValidator doubleNumValidator,
+                       PasswordEncoder passwordEncoder, BalanceValidator doubleNumValidator,
                        ClientConverter clientConverter) {
         super("User", userRepository);
 
@@ -115,4 +115,8 @@ public class UserService extends AbstractService<User> implements IUserService {
         return updatedUser;
     }
 
+    @Override
+    public List<User> findAllUsersByUserRole(User userId) {
+        return null;
+    }
 }

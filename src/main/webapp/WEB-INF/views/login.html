@@ -1,23 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Login</title>
-    <th:block th:insert="fragments/header :: head"></th:block>
+    <th:block th:insert="fragments/header :: head" />
 </head>
 
 <header>
-    <th:block th:insert="fragments/header :: login-header"></th:block>
+    <th:block th:insert="fragments/header :: login-header" />
 </header>
 
 <body class="main-body">
 <main class="login-form">
-    <form th:action="@{/}">
+    <form th:action="@{/login}" method="post">
         <h1>Login</h1>
-        <h1 th:text="${gu}" />
 
         <br/>
-        <h2 th:if="${#request.getAttribute('errorLogin') != null}">ErrorLogin</h2>
 
         <br/>
         <input type="text" name="username" placeholder="Username" min="2" max="61"
@@ -26,14 +25,16 @@
         <br/>
         <br/>
         <input type="password" name="password" placeholder="Password" min="8" max="20"
-               pattern="(?=.*[A-ZА-ЯЁ])(?=.*[a-zа-яё])(?=.*\d)[\wА-Яа-яЁё]{8,20}" required />
+               pattern="(?=.*[A-ZА-ЯЁ])(?=.*[a-zа-яё])(?=.*\d)[\wА-Яа-яЁё]{8,20}"
+               title="Must contain at least ONE NUMBER, ONE UPPERCASE and LOWERCASE LETTERS, also [_], [min max] length of password [8 20] characters" required />
+
         <button type="submit">Log in</button>
+
         <div>
-            <a th:href="@{/registrationPage}" >Not registered yet?</a>
+            <a th:href="@{/registrationPage}">Not registered yet?</a>
         </div>
     </form>
 </main>
 
 </body>
-
 </html>

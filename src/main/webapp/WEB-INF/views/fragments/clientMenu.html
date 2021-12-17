@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 <body class="main-body">
 
 <nav th:fragment="clientMenu" class="menu-wrapper">
     <a href="#">Main</a>
-    <a href="#">View schedule</a>
-    <a href="#">View ad statistic</a>
-    <a href="#">View device status</a>
-    <a th:href="@{/orderPage}">Make order</a>
+    <a th:href="@{/ads}">My ads</a>
+    <a th:href="@{/schedule}">View schedule</a>
+    <a th:href="@{/adStatistics}">View ad statistics</a>
+    <a th:href="@{/deviceStatus}">View device status</a>
+    <a th:href="@{/order}">Make order</a>
+    <a th:href="@{/clientProfile}">Profile</a>
 </nav>
 
 </body>

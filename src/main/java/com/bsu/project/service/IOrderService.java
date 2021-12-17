@@ -1,7 +1,6 @@
 package com.bsu.project.service;
 
 import com.bsu.project.entity.Order;
-import com.bsu.project.entity.User;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
 @author Gulshirin Berdiyeva
 */
 public interface IOrderService {
-    List<Order> findAllByUser(User user);
+    List<Order> findAllByUserId(Long userId);
 
     long countAdsByUserIdAndPayment(long userId);
 

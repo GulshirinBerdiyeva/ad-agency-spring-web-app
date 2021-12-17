@@ -18,21 +18,19 @@ import java.util.stream.Collectors;
  */
 @Service
 public class AdService extends AbstractService<Ad> implements IAdService {
-    private final OrderService orderService;
+    private final AdRepository adRepository;
     private  final ImageFileReader imageFileReader;
 
     @Autowired
-    public AdService(AdRepository repository, OrderService orderService, ImageFileReader imageFileReader) {
-        super("Ad", repository);
+    public AdService(AdRepository adRepository, ImageFileReader imageFileReader) {
+        super("Ad", adRepository);
 
-        this.orderService = orderService;
+        this.adRepository = adRepository;
         this.imageFileReader = imageFileReader;
     }
 
     @Override
-    public List<Ad> findAllAdByUser(User user) {
-        List<Order> orders = orderService.findAllByUser(user);
-
+    public List<Ad> findAllAdByUser(List<Order> orders, User user) {
         List<Ad> ads = orders
                 .stream()
                 .filter(order -> order.getUser().getId() == user.getId())

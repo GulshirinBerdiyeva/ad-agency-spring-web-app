@@ -46,4 +46,11 @@ public class AdminController {
         return "adminProfile";
     }
 
+    @GetMapping("/clients")
+    public String getClientsListPage(HttpServletRequest request) {
+        User user = userService.getCurrentUser(request);
+
+        return "clients";
+    }
+
 }

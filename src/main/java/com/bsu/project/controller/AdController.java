@@ -1,9 +1,11 @@
 package com.bsu.project.controller;
 
 import com.bsu.project.entity.Ad;
+import com.bsu.project.entity.Order;
 import com.bsu.project.entity.User;
 import com.bsu.project.repository.RepositoryException;
 import com.bsu.project.service.AdService;
+import com.bsu.project.service.OrderService;
 import com.bsu.project.service.ServiceException;
 import com.bsu.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +23,14 @@ import java.util.List;
 public class AdController {
     private final AdService adService;
     private final UserService userService;
+    private final OrderService orderService;
 
     @Autowired
-    public AdController(AdService adService, UserService userService) {
+    public AdController(AdService adService, UserService userService,
+                        OrderService orderService) {
         this.adService = adService;
         this.userService = userService;
+        this.orderService = orderService;
     }
 
     @GetMapping("/ads")
@@ -33,7 +38,9 @@ public class AdController {
         try {
             User user = userService.getCurrentUser(request);
 
-            List<Ad> ads = adService.findAllAdByUser(user);
+            List<Order> orders = orderService.findAllByUserId(user.getId());
+
+            List<Ad> ads = adService.findAllAdByUser(orders, user);
 
             model.addAttribute("ads", ads);
 

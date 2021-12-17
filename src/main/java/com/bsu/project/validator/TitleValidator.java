@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  */
 @Component
 public class TitleValidator extends AbstractValidator {
-    private static final String TITLE_REGEX = "(?=.*[A-Za-zА-Яа-яЁё])(?=.*[A-Za-zА-Яа-яЁё])[\\wА-Яа-яЁё ']{3,40}";
+    private static final String TITLE_REGEX = "(?=.*[A-Za-zА-Яа-яЁё])(?=.*[A-Za-zА-Яа-яЁё])[\\wА-Яа-яЁё ']{3,100}";
 
     @Override
     public boolean isValid(String inputValue) {
