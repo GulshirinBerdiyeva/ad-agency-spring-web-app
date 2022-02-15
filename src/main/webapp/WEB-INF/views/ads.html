@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Ads</title>
+    <th:block th:insert="fragments/header :: head" />
+</head>
+
+<body class="main-body">
+
+<header>
+    <th:block th:insert="fragments/header :: main-header" />
+</header>
+
+<nav th:insert="fragments/clientMenu :: clientMenu" />
+
+<main>
+    <div class="container">
+        <div class="music-container">
+
+            <div th:each="ad : ${ads}" class="box">
+                <div class="image">
+                    <img th:src="@{${'/images/' + ad.id}}">
+                </div>
+
+                <div class="music">
+                    <h2 th:text="${ad.title}"></h2>
+                    <h2 th:text="${'Translation time ' + ad.translationTime + ' hours'}"></h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

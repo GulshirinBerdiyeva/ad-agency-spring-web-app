@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<body class="main-body">
+
+<nav th:fragment="adminMenu" class="menu-wrapper">
+    <a href="#">Main</a>
+    <a th:href="@{/schedule}">View schedule</a>
+    <a th:href="@{/clients}">View clients</a>
+    <a th:href="@{/deviceMonitoring}">Device monitoring</a>
+    <a th:href="@{/adminProfile}">Profile</a>
+</nav>
+
+</body>
+</html>

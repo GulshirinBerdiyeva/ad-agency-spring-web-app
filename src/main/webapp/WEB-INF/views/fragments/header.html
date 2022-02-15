@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+</head>
+
+<div th:fragment="login-header" class="header-wrapper">
+    <h1>Advertisement agency</h1>
+</div>
+
+<div th:fragment="main-header" class="header-wrapper">
+    <h1>Advertisement agency</h1>
+
+    <div class="logout">
+        <form th:action="@{/logout}">
+            <button type="submit">Log out</button>
+        </form>
+    </div>
+</div>
+
+</html>

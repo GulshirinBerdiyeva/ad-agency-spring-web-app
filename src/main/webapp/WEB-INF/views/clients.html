@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin profile</title>
+    <th:block th:insert="fragments/header :: head" />
+</head>
+
+<body class="main-body">
+
+<header>
+    <th:block th:insert="fragments/header :: main-header" />
+</header>
+
+<nav th:insert="fragments/adminMenu :: adminMenu" />
+
+
+<main class="album-main">
+    <div class="clients-header" >
+        <h1>Clients</h1>
+    </div>
+
+    <div class="table-wrapper" >
+        <table class="table" >
+            <thead id="table-thead">
+            <tr>
+                <th id="thead-number">№</th>
+                <th>Username</th>
+                <th>Ad's amount</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="client, i : ${clients}, adAmont : ${adsAmount}" >
+                <th th:text="${i.index + 1}"></th>
+                <th th:text="${client.username}"></th>
+                <th th:text="${adAmount}"></th>
+
+                <th id="table-column">
+                    <form th:action="@{${'/delete/users/' + client.id}}" method="post" >
+                        <div class="discount-wrapper-input-button" >
+                            <button name="clientId" th:value="${client.id}" type="submit">Delete</button>
+                        </div>
+                    </form>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+</body>
+</html>
